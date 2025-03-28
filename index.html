@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zimmerei Klaus Siewert</title>
+  <style>
+    /* Grundlegendes Layout & Farben */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #4a2c2a; /* Eleganter, dunkler Farbton */
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      font-size: 1.1em;
+      padding: 5px 10px;
+      transition: background-color 0.3s, color 0.3s;
+      border-radius: 5px;
+    }
+
+    nav ul li:hover,
+    nav ul li.active {
+      background-color: #8e1c1c;
+      color: #fff;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    /* Abschnittscontainer */
+    .section-content {
+      background: #fff;
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .section-content h2 {
+      margin-top: 0;
+      font-size: 2em;
+      color: #4a2c2a;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Standard: Alle Seiten ausblenden */
+    .hidden {
+      display: none;
+    }
+
+    /* Home-Bereich */
+    #home p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .placeholder {
+      background: #ddd;
+      border-radius: 10px;
+      padding: 40px;
+      text-align: center;
+      font-size: 1.2em;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    /* Produkte-Untermenü */
+    .product-menu {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .product-menu button {
+      background-color: #4a2c2a;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px 10px;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .product-menu button:hover {
+      background-color: #6b4544;
+    }
+
+    .product-section {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .product-section.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    button.request-btn {
+      background-color: #4a2c2a;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button.request-btn:hover {
+      background-color: #6b4544;
+    }
+
+    footer {
+      background-color: #4a2c2a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 1em;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <h1>Zimmerei Klaus Siewert</h1>
+    <nav>
+      <ul>
+        <li class="nav-item active" data-section="home">Home</li>
+        <li class="nav-item" data-section="produkte">Produkte</li>
+        <li class="nav-item" data-section="firmenhistorie">Firmenhistorie</li>
+        <li class="nav-item" data-section="referenzen">Referenzen</li>
+        <li class="nav-item" data-section="leistung">Leistung</li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hauptinhalt -->
+  <main>
+    <!-- Home -->
+    <section id="home" class="section-content">
+      <h2>Willkommen bei Zimmerei Klaus Siewert</h2>
+      <p>
+        Herzlich willkommen auf der Website der Zimmerei Klaus Siewert – Ihrem zuverlässigen Partner für hochwertigen Holzbau und Zimmereiarbeiten. Erfahren Sie mehr über unser traditionelles Handwerk, innovative Lösungen und unser umfassendes Leistungsangebot.
+      </p>
+      <div class="placeholder">
+        Platz für ein eindrucksvolles Hero-Bild oder ein Video
+      </div>
+    </section>
+
+    <!-- Produkte -->
+    <section id="produkte" class="section-content hidden">
+      <h2>Unsere Produkte</h2>
+      <p>Wählen Sie aus unserem vielfältigen Angebot:</p>
+      <div class="product-menu">
+        <button onclick="showProduct('fliegengitter')">Fliegengitter</button>
+        <button onclick="showProduct('dachfenster')">Dachfenster</button>
+        <button onclick="showProduct('fenster')">Fenster</button>
+        <button onclick="showProduct('tueren')">Türen</button>
+        <button onclick="showProduct('balkone')">Balkone</button>
+        <button onclick="showProduct('dacharbeiten')">Dacharbeiten</button>
+      </div>
+      
+      <!-- Produkt-Sektionen -->
+      <div id="fliegengitter" class="product-section">
+        <h3>Fliegengitter</h3>
+        <label for="gitter-type">Typ wählen:</label>
+        <select id="gitter-type">
+          <option value="fenster">Für Fenster</option>
+          <option value="tuere">Für Tür</option>
+        </select>
+        <label for="quantity-fliegengitter">Menge:</label>
+        <input type="number" id="quantity-fliegengitter" min="1" value="1" placeholder="Menge">
+        <button class="request-btn" onclick="requestProduct('fliegengitter')">Anfrage senden</button>
+      </div>
+
+      <div id="dachfenster" class="product-section">
+        <h3>Dachfenster</h3>
+        <label for="dachfenster-type">Fenster-Typ:</label>
+        <select id="dachfenster-type">
+          <option value="klein">Klein</option>
+          <option value="mittel">Mittel</option>
+          <option value="groß">Groß</option>
+        </select>
+        <label for="quantity-dachfenster">Menge:</label>
+        <input type="number" id="quantity-dachfenster" min="1" value="1" placeholder="Menge">
+        <button class="request-btn" onclick="requestProduct('dachfenster')">Anfrage senden</button>
+      </div>
+
+      <div id="fenster" class="product-section">
+        <h3>Fenster</h3>
+        <label for="fenster-type">Fenster-Typ:</label>
+        <select id="fenster-type">
+          <option value="einzelfenster">Einzelfenster</option>
+          <option value="doppelfenster">Doppelfenster</option>
+          <option value="schiebefenster">Schiebefenster</option>
+        </select>
+        <label for="quantity-fenster">Menge:</label>
+        <input type="number" id="quantity-fenster" min="1" value="1" placeholder="Menge">
+        <button class="request-btn" onclick="requestProduct('fenster')">Anfrage senden</button>
+      </div>
+
+      <div id="tueren" class="product-section">
+        <h3>Türen</h3>
+        <label for="tueren-type">Tür-Typ:</label>
+        <select id="tueren-type">
+          <option value="einzeltuer">Einzeltür</option>
+          <option value="doppeltuer">Doppeltür</option>
+          <option value="schiebtuer">Schiebetür</option>
+        </select>
+        <label for="quantity-tueren">Menge:</label>
+        <input type="number" id="quantity-tueren" min="1" value="1" placeholder="Menge">
+        <button class="request-btn" onclick="requestProduct('tueren')">Anfrage senden</button>
+      </div>
+
+      <div id="balkone" class="product-section">
+        <h3>Balkone</h3>
+        <label for="balkone-type">Balkon-Typ:</label>
+        <select id="balkone-type">
+          <option value="klein">Klein</option>
+          <option value="mittel">Mittel</option>
+          <option value="groß">Groß</option>
+        </select>
+        <label for="quantity-balkone">Menge:</label>
+        <input type="number" id="quantity-balkone" min="1" value="1" placeholder="Menge">
+        <button class="request-btn" onclick="requestProduct('balkone')">Anfrage senden</button>
+      </div>
+
+      <div id="dacharbeiten" class="product-section">
+        <h3>Dacharbeiten</h3>
+        <label for="dacharbeiten-type">Art der Dacharbeiten:</label>
+        <select id="dacharbeiten-type">
+          <option value="dachreparatur">Dachreparatur</option>
+          <option value="dachsanierung">Dachsanierung</option>
+          <option value="neubau">Neubau</option>
+        </select>
+        <label for="quantity-dacharbeiten">Menge:</label>
+        <input type="number" id="quantity-dacharbeiten" min="1" value="1" placeholder="Menge">
+        <button class="request-btn" onclick="requestProduct('dacharbeiten')">Anfrage senden</button>
+      </div>
+    </section>
+
+    <!-- Firmenhistorie -->
+    <section id="firmenhistorie" class="section-content hidden">
+      <h2>Firmenhistorie</h2>
+      <p>
+        Gegründet im Jahr 1975, hat sich die Zimmerei Klaus Siewert in über 45 Jahren zu einem renommierten Unternehmen im Bereich Holzbau und Zimmerei entwickelt. Mit viel Leidenschaft und handwerklichem Können realisieren wir Projekte für private sowie gewerbliche Kunden – immer maßgeschneidert und mit Liebe zum Detail.
+      </p>
+      <div class="placeholder">
+        Platz für Bilder und Videos zur Firmenhistorie
+      </div>
+    </section>
+
+    <!-- Referenzen -->
+    <section id="referenzen" class="section-content hidden">
+      <h2>Referenzen</h2>
+      <p>
+        Unsere zahlreichen Projekte zeugen von Qualität und Zuverlässigkeit. Von Einfamilienhäusern über repräsentative Bürogebäude bis hin zu anspruchsvollen Gewerbeprojekten – unsere Referenzen sprechen für sich und überzeugen durch Handwerkskunst und Innovationskraft.
+      </p>
+      <div class="placeholder">
+        Platz für Referenzbilder und Videoausschnitte
+      </div>
+    </section>
+
+    <!-- Leistung -->
+    <section id="leistung" class="section-content hidden">
+      <h2>Leistung</h2>
+      <p>
+        Unser Leistungsspektrum im Bereich Zimmerei und Holzbau umfasst die Fertigung und Montage von Fliegengittern, Dachfenstern, Fenstern, Türen, Balkonen sowie umfangreiche Dacharbeiten. Wir bieten Ihnen individuelle Lösungen, höchste Qualität und Nachhaltigkeit – von der Planung bis zur Umsetzung.
+      </p>
+      <div class="placeholder">
+        Platz für Leistungsübersichten, Grafiken und Videos
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Zimmerei Klaus Siewert. Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <script>
+    // Navigation: Beim Klicken auf einen Menüpunkt werden alle Seiten ausgeblendet und die gewünschte Seite eingeblendet.
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('.section-content');
+
+    navItems.forEach(item => {
+      item.addEventListener('click', function() {
+        // Markiere aktiven Menüpunkt
+        navItems.forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        // Blende alle Bereiche aus
+        sections.forEach(sec => sec.classList.add('hidden'));
+        // Zeige den ausgewählten Bereich an
+        const target = this.getAttribute('data-section');
+        document.getElementById(target).classList.remove('hidden');
+      });
+    });
+
+    // Produkte-Untermenü: Umschalten der Produkt-Sektionen
+    function showProduct(category) {
+      const prodSections = document.querySelectorAll('.product-section');
+      prodSections.forEach(sec => sec.classList.remove('active'));
+      const target = document.getElementById(category);
+      if (target) {
+        target.classList.add('active');
+      }
+    }
+
+    // Funktion zum Senden der Anfrage per E-Mail
+    function requestProduct(category) {
+      let product = '';
+      let quantity = 0;
+      let additionalInfo = '';
+
+      if (category === 'fliegengitter') {
+        const type = document.getElementById('gitter-type').value;
+        quantity = parseInt(document.getElementById('quantity-fliegengitter').value);
+        if (isNaN(quantity) || quantity < 1) {
+          alert('Bitte geben Sie eine gültige Menge ein.');
+          return;
+        }
+        product = `Fliegengitter (${type})`;
+        additionalInfo = "Bitte teilen Sie uns Ihre Adresse mit, damit wir die Lieferung arrangieren können.";
+      } else if (category === 'dachfenster') {
+        const type = document.getElementById('dachfenster-type').value;
+        quantity = parseInt(document.getElementById('quantity-dachfenster').value);
+        if (isNaN(quantity) || quantity < 1) {
+          alert('Bitte geben Sie eine gültige Menge ein.');
+          return;
+        }
+        product = `Dachfenster (${type})`;
+        additionalInfo = "Bitte teilen Sie uns die gewünschte Lieferadresse und Einbaubedingungen mit.";
+      } else if (category === 'fenster') {
+        const type = document.getElementById('fenster-type').value;
+        quantity = parseInt(document.getElementById('quantity-fenster').value);
+        if (isNaN(quantity) || quantity < 1) {
+          alert('Bitte geben Sie eine gültige Menge ein.');
+          return;
+        }
+        product = `Fenster (${type})`;
+        additionalInfo = "Bitte geben Sie uns die Maße der Fenster an.";
+      } else if (category === 'tueren') {
+        const type = document.getElementById('tueren-type').value;
+        quantity = parseInt(document.getElementById('quantity-tueren').value);
+        if (isNaN(quantity) || quantity < 1) {
+          alert('Bitte geben Sie eine gültige Menge ein.');
+          return;
+        }
+        product = `Tür (${type})`;
+        additionalInfo = "Bitte teilen Sie uns die exakten Maße der Tür mit.";
+      } else if (category === 'balkone') {
+        const type = document.getElementById('balkone-type').value;
+        quantity = parseInt(document.getElementById('quantity-balkone').value);
+        if (isNaN(quantity) || quantity < 1) {
+          alert('Bitte geben Sie eine gültige Menge ein.');
+          return;
+        }
+        product = `Balkon (${type})`;
+        additionalInfo = "Bitte geben Sie uns die gewünschten Maße für den Balkon an.";
+      } else if (category === 'dacharbeiten') {
+        const type = document.getElementById('dacharbeiten-type').value;
+        quantity = parseInt(document.getElementById('quantity-dacharbeiten').value);
+        if (isNaN(quantity) || quantity < 1) {
+          alert('Bitte geben Sie eine gültige Menge ein.');
+          return;
+        }
+        product = `Dacharbeiten (${type})`;
+        additionalInfo = "Bitte teilen Sie uns die Art der benötigten Dacharbeiten mit.";
+      }
+
+      const emailContent = `
+Sehr geehrte Damen und Herren,
+
+ich möchte gerne folgendes Produkt anfragen:
+
+Produkt: ${product}
+Menge: ${quantity}
+
+Zusätzliche Informationen:
+${additionalInfo}
+
+Bitte kontaktieren Sie mich bezüglich weiterer Details und der Lieferung.
+
+Mit freundlichen Grüßen,
+[Ihr Name]
+      `;
+
+      window.location.href = `mailto:test@gmail.com?subject=Produktanfrage&body=${encodeURIComponent(emailContent)}`;
+    }
+  </script>
+</body>
+</html>
